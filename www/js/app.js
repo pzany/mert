@@ -59,11 +59,11 @@ angular.module('mert', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.res-bookings', {
+      url: '/res-bookings/:chatId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
+        'tab-resources': {
+          templateUrl: 'templates/res-bookings.html',
           controller: 'ChatDetailCtrl'
         }
       }
