@@ -1,14 +1,23 @@
 <!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
-  The FriendsCtrl pulls data from the Friends service (service.js)
-  The Friends service returns an array of friend data
+Inherits the following models from ResourceBookingCtrl controller:
+res: res.name, res.id, res.owner, res.image, etc
+dates: array of day
+day: day.dow, day.date
 -->
-<ion-view view-title="{{chat.name}}">
+<ion-view view-title="{{res.name}}">
   <ion-content class="padding">
-    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{chat.lastText}}
-    </p>
+    <ion-list>
+      <ion-item class="item-remove-animate item-icon-right" ng-repeat="day in dates" type="item-text-wrap" 
+      href="#/tab/resources/timeslots/{{day.date}}/{{day.dow}}/{{res.id}}">
+        <h2>{{day.dow}} {{day.date}}</h2>
+        <p>Utilization Bar</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+    <!--p>
+      {{res.image}}
+      {{res.owner}}
+      <a href="#/tab/resources/info/1">Goto Info</a>
+    </p-->
   </ion-content>
 </ion-view>
