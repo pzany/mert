@@ -96,11 +96,11 @@ angular.module('mert', ['ionic', 'controllers', 'services'])
 
   .run(function ($ionicPlatform) {
     
-    if (!confirm("App.run()")) return;
+    db("App.run()");
 
     $ionicPlatform.ready(function () {
 
-      alert("ionicPlatform ready!");
+      db("ionicPlatform ready!");
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {

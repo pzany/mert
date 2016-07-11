@@ -5,12 +5,12 @@ angular.module('controllers', [])
 
 
   .controller('HomeCtrl', function ($scope, User) {
-    alert("Home tab");
+    db("Home tab");
 
     $scope.user = User.getModel();
 
     $scope.showuser = function () {
-      alert("Selected user is " + User.getName());
+      db("Selected user is " + User.getName());
     };
   })
 
@@ -24,11 +24,11 @@ angular.module('controllers', [])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 
-    alert("Resource tab");
+    db("Resource tab");
 
     Resources.getModel().then(
       function (data) {
-        alert("Resource controller: resource count = " + data.length);
+        db("Resource controller: resource count = " + data.length);
         $scope.resources = data;
         $timeout(); // update view
       }
@@ -38,7 +38,7 @@ angular.module('controllers', [])
   .controller('ResourceBookingCtrl', function ($scope, $stateParams, $timeout,
     Resources, AvailDates, MertServer) {
 
-    alert("Resource Bookings View of resID " + $stateParams.resID);
+    db("Resource Bookings View of resID " + $stateParams.resID);
 
     $scope.res = Resources.get($stateParams.resID);
 
@@ -51,7 +51,7 @@ angular.module('controllers', [])
   .controller('ResourceTimeslotCtrl', function ($scope, $stateParams, $timeout,
     Resources, Bookings, User) {
 
-    alert("Resource Timeslot View");
+    db("Resource Timeslot View");
 
     // load Bookings array as necessary
     Bookings.getModel();
@@ -82,7 +82,7 @@ angular.module('controllers', [])
     };
 
     $scope.delbooking = function (id) {
-      alert("Delete booking ID " + id);
+      db("Delete booking ID " + id);
       Bookings.delBooking(id).then(
         function (status) {
           Bookings.refresh().then(
@@ -110,7 +110,7 @@ angular.module('controllers', [])
   .controller('ResourceAddbookingCtrl', function ($scope, $stateParams, $timeout, $ionicHistory,
     Resources, Bookings, User) {
 
-    alert("Resource Add Booking View");
+    db("Resource Add Booking View");
 
     // load Bookings array as necessary
     Bookings.getModel();
@@ -152,13 +152,13 @@ angular.module('controllers', [])
         function (data) {
           Bookings.refresh().then(
             function (status) {
-              alert("Go back to prev view");
+              db("Go back to prev view");
               $ionicHistory.goBack(-1);
             }
           );
         },
         function (reason) {
-          alert(reason);
+          db(reason);
         }
         );
     };
@@ -168,7 +168,7 @@ angular.module('controllers', [])
   .controller('ResourceInfoCtrl', function ($scope, $stateParams, $timeout,
     Resources) {
 
-    alert("Resource Specs View of resID " + $stateParams.resID);
+    db("Resource Specs View of resID " + $stateParams.resID);
 
     var resObj = Resources.get($stateParams.resID);
 
@@ -182,14 +182,14 @@ angular.module('controllers', [])
   .controller('BookingsCtrl', function ($scope, $timeout,
     Bookings, Resources, User) {
 
-    alert("Bookings tab");
+    db("Bookings tab");
 
     $scope.$on('$ionicView.enter', function (e) {
 
       // get Bookings Data and make available to the view
       Bookings.getModel().then(
         function (data) {
-          alert("Bookings controller: bookings count = " + data.length);
+          db("Bookings controller: bookings count = " + data.length);
           $scope.bookings = data;
           $timeout(); // update view
         }
@@ -212,7 +212,7 @@ angular.module('controllers', [])
     };
 
     $scope.delbookingByID = function (id) {
-      alert("Delete booking ID " + id);
+      db("Delete booking ID " + id);
       Bookings.delBooking(id).then(
         function (status) {
           Bookings.refresh().then(
@@ -226,7 +226,7 @@ angular.module('controllers', [])
     };
 
     $scope.doRefresh = function () {
-      alert("Refresh Bookings Tab!");
+      db("Refresh Bookings Tab!");
       Bookings.refresh().then(function (data) {
         $scope.bookings = data;
         $scope.$broadcast("scroll.refreshComplete");

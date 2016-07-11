@@ -2,6 +2,18 @@
 // These are std JS functions, non-Angular related
 // In VS Code, type Shift-Opt-F to beautify!
 
+gv_Debug = false;
+
+// use this to print debug messages
+// may be globally switched off using gv_Debug = false above
+function db (m) {
+  if (!gv_Debug) return;
+  if (!confirm(m)) {
+    gv_Debug = false;
+    return;
+  }
+}
+
 // prepad a number with 0 to a given length
 // var a = prepad (5,3) becomes "005"
 function prepad(n, len) {

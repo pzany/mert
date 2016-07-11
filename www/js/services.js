@@ -60,7 +60,7 @@ myservices.factory('Resources', function ($http, MertServer) {
         url += "&m=mert_svc&cmd=queryTable&p1=Resources";
         doJSONP($http, url).then(
           function (data) {
-            alert("Loaded resources from MERT server. Count = " + data.length);
+            db("Loaded resources from MERT server. Count = " + data.length);
             model = data;  // cache locally
             validflag = true;
             resolve(data);
@@ -190,7 +190,7 @@ myservices.factory('Bookings', function ($http, $timeout, MertServer) {
         url += "&m=mert_svc&cmd=queryTable&p1=Bookings";
         doJSONP($http, url).then(
           function (data) {
-            alert("Loaded bookings from MERT server. Count = " + data.length);
+            db("Loaded bookings from MERT server. Count = " + data.length);
             model = data;  // cache locally
             validflag = true;
             resolve(data);
@@ -206,10 +206,10 @@ myservices.factory('Bookings', function ($http, $timeout, MertServer) {
     getModel: function () {
       var self = this;
       var p = new Promise(function (resolve, reject) {
-        if (validflag) { alert('cached bookings'); resolve(model); }
+        if (validflag) { db('cached bookings'); resolve(model); }
         else {
           self.load().then(
-            function (data) { alert('server bookings'); resolve(data); },
+            function (data) { db('server bookings'); resolve(data); },
             function (err) { reject(err); }
           );
         }
@@ -281,7 +281,7 @@ myservices.factory('Bookings', function ($http, $timeout, MertServer) {
         url += "&m=mert_svc&cmd=delBooking&p1=" + id;
         doJSONP($http, url).then(
           function (data) {
-            alert("Delete MERT server booking status is " + data);
+            db("Delete MERT server booking status is " + data);
             resolve ("OK");
           }
         );
@@ -308,7 +308,7 @@ myservices.factory('Bookings', function ($http, $timeout, MertServer) {
         doJSONP($http, url).then(
           function (data) {
             if (data == "OK") {
-              alert("Add booking to MERT server: Status is " + data);
+              db("Add booking to MERT server: Status is " + data);
               resolve(data);
             }
             else {
