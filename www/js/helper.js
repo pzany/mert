@@ -43,6 +43,43 @@ function getDOW(datestr) {
   var dateArr = datestr.split("-");
   var dateObj = new Date(dateArr[0], dateArr[1] - 1, dateArr[2]);
   var wd = dateObj.getDay();
-  var dayArr = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];  
+  var dayArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return dayArray[wd];
+}
+
+// doJSONP with url and returns JSON object
+// URL must contain ?callback=JSON_CALLBACK
+function doJSONP($http, url) {
+  var p = new Promise(function (resolve, reject) {
+    $http.jsonp(url)
+      .success(function (data) {
+        resolve(data);
+      })
+      .error(function (reason) {
+        reject("JSONP ERROR: " + reason);
+      });
+  });
+  return p;
+}
+
+// return array of hours viz ["0000","0030", etc]
+function makeHoursArray() {
+  var hhArr = [];
+  for (var i = 0; i < 48; i++) {
+    var j = Math.floor(i / 2);
+    var hh = "", mm = "";
+    if (i % 2 == 0) mm = "00"; else mm = "30";
+    hh = prepad(j, 2);
+    hh += mm;
+    hhArr.push(hh);
+  }
+  return hhArr;
+}
+
+// update controllers
+function updateController (ctrlScope) {
+  if (typeof ctrlScope == "undefined") return;
+  if (ctrlScope === null) return;
+  if (ctrlScope === false) return;
+  ctrlScope.update();
 }

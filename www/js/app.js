@@ -7,6 +7,8 @@ var mm = curDate.getMonth();
 var yy = curDate.getFullYear();
 var today = yy + "-" + prepad((mm + 1), 2) + "-" + prepad(dd, 2);
 
+function pshout () {alert ('aiya');}
+
 gv_Bookings = [
   {
     id: "0",
@@ -90,8 +92,10 @@ function intervalLooper() {
 // 'starter.controllers' is found in controllers.js
 angular.module('mert', ['ionic', 'controllers', 'services'])
 
-  .run(function ($ionicPlatform) {
+  .constant ("MertServer","edu.ipg.4u.sg")
 
+  .run(function ($ionicPlatform) {
+    
     if (!confirm("App.run()")) return;
 
     $ionicPlatform.ready(function () {
@@ -108,7 +112,6 @@ angular.module('mert', ['ionic', 'controllers', 'services'])
         StatusBar.styleDefault();
       }
 
-      //setTimeout (intervalLooper,2000);
     });
   })
 
@@ -123,7 +126,7 @@ angular.module('mert', ['ionic', 'controllers', 'services'])
       // setup an abstract state for the tabs directive
       .state('tab', {
         url: '/tab',
-        //abstract: true,
+        abstract: true,
         templateUrl: 'templates/tabs.html'
       })
 
@@ -167,7 +170,7 @@ angular.module('mert', ['ionic', 'controllers', 'services'])
         }
       })
       .state('tab.res-addbooking', {
-        url: '/resources/addbooking',
+        url: '/resources/addbooking/:date/:hour/:resid',
         views: {
           'tab-resources': {
             templateUrl: 'templates/res-addbooking.html',
@@ -176,7 +179,7 @@ angular.module('mert', ['ionic', 'controllers', 'services'])
         }
       })
       .state('tab.res-info', {
-        url: '/resources/info/1',
+        url: '/resources/info/:resID',
         views: {
           'tab-resources': {
             templateUrl: 'templates/res-info.html',
