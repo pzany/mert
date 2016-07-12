@@ -1,0 +1,13 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = https://github.com/mert16/mert.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[user]
+	name = mert16
+        email = mert@pobox.4u.sg

@@ -1,5 +1,14 @@
-// architecture originally designed by Philip Pang
-// subsequent changes by other team members
+// MERT App based on IONIC Framework
+
+/*
+controllers.js
+(c) July 2016
+
+Initial codebase written by Philip Pang with enhancements
+by:
+- David Prasad
+- Ratheesh Kumar
+*/
 
 angular.module('controllers', [])
 
@@ -158,7 +167,7 @@ angular.module('controllers', [])
           );
         },
         function (reason) {
-          db(reason);
+          popAlert(reason);
         }
         );
     };
