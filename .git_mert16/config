@@ -11,3 +11,6 @@
 [user]
 	name = mert16
         email = mert@pobox.4u.sg
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master

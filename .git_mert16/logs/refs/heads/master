@@ -1,2 +1,4 @@
 0000000000000000000000000000000000000000 0d027ce5a9c7a3e667fb36c765dc8249f2715abd mert16 <philip@mbox.4u.sg> 1468208720 +0800	commit (initial): 0 MERT Initial Codebase
 0d027ce5a9c7a3e667fb36c765dc8249f2715abd 06820cb21a3b0b21555f7358780551a5b42bf8bf mert16 <mert@pobox.4u.sg> 1468368308 +0800	commit: 1 MERT codebase 1.0a with popAlert
+06820cb21a3b0b21555f7358780551a5b42bf8bf 2fe3f0c78f7ad822c6fd577a40b288dc70cae5e3 mert16 <mert@pobox.4u.sg> 1469118490 +0800	commit: 2 MERT codebase 2.0
+2fe3f0c78f7ad822c6fd577a40b288dc70cae5e3 9298ad42a0efdd7f556ea309ef88d424658b1191 mert16 <mert@pobox.4u.sg> 1469119216 +0800	commit: 2a MERT codebase 2.0a
